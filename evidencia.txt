@@ -23,3 +23,22 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^^^^
 AssertionError: write() argument must be a bytes instance
 127.0.0.1 - - [26/Aug/2026 11:44:43] "GET /tasks HTTP/1.1" 500 59
+
+paso: "GET"
+running on port 9292
+127.0.0.1 - - [26/Aug/2026 12:44:32] "GET /tasks/1 HTTP/1.1" 200 133
+127.0.0.1 - - [26/Aug/2026 12:45:30] "GET /tasks/1 HTTP/1.1" 200 133
+paso pero no muestra una tarea particular
+
+tercer fallo: GET
+running on port 9292
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lito/Desktop/pyHTTPserv-unrc-compubasados200/httpServ.py", line 28, in thatServer
+    response = json.dumps(LIST[path[2]])
+                          ~~~~^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+127.0.0.1 - - [26/Aug/2026 12:54:42] "GET /tasks/1 HTTP/1.1" 500 59
+

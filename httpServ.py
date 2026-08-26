@@ -14,19 +14,26 @@ def thatServer(environ, start_response):
     request = environ["REQUEST_METHOD"]
     path = environ["PATH_INFO"]
 
-    if not path.startswith("/tasks") :
+    path = path.split("/")
+    # path["", "taskt", "#"]
+
+    if not path[1] != "task":
         status = "404 NOT FOUND"
         start_response(status, headers)
-        return [b"directorio no disponible"]
+        return [b"directorio no disponible o inexistente"]
 
     if request == "GET":
-        if path == "/tasks" or path == "/tasks/":
+        if len(path) == 3:
             start_response(status, headers)
-            response = json.dumps(LIST)
-            return  [response.encode("utf-8"), b"\n"]#ya funciona
-        else:
-            start_response(status, headers)
-            return [b"funcionando plenamente"]
+            index = path[2]
+            index = int(index)
+            response = json.dumps(LIST[index])
+            return [response.encode('utf-8'), b"\n"]
+
+        start_response(status, headers)
+        response = json.dumps(LIST)
+        return  [response.encode('utf-8'), b"\n"]#ya funciona
+            
     elif request == "POST" :
         start_response(status, headers)
         return [b"no implementado"]
