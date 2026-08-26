@@ -1,21 +1,29 @@
 from wsgiref.simple_server import make_server
 import json
 
+LIST = [
+    {"tittle" : "learn HTTP", "done" : False},
+    {"tittle" : "learn python", "done": False},
+    {"tittle" : "learn HTTP verbs", "donde" : False}
+    ]
+
+    
 def thatServer(environ, start_response):
     status = "200 OK" #estado base
-    headers = [('Content-Type', 'text/plain')]
+    headers = [('Content-Type', 'application/json')]
     request = environ["REQUEST_METHOD"]
     path = environ["PATH_INFO"]
-    
 
-    if not path.startsWith("/task") :
+    if not path.startswith("/tasks") :
         status = "404 NOT FOUND"
         start_response(status, headers)
         return [b"directorio no disponible"]
+
     if request == "GET":
-        if path == "/task" or path == "/task/":
+        if path == "/tasks" or path == "/tasks/":
             start_response(status, headers)
-            return [b"funcionando plenamente"]
+            response = json.dumps(LIST)
+            return  [response.encode("utf-8"), b"\n"]#ya funciona
         else:
             start_response(status, headers)
             return [b"funcionando plenamente"]
@@ -29,8 +37,6 @@ def thatServer(environ, start_response):
         start_response(status, headers)
         return [b"no implementado"]
 
-
-        
 
 
 with make_server("", 9292, thatServer) as server:

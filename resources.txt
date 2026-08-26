@@ -5,3 +5,4 @@
     5. https://enriquecuenca.es/programacion/aprender-json/
     6. https://www.geeksforgeeks.org/python/json-load-in-python/
     7. https://apuntes.de/python/manipulacion-de-strings-en-python-conceptos-basicos/#gsc.tab=0
+    8. https://programmerah.com/solved-wsgiref-make_server-error-assertionerror-write-argument-must-be-a-bytes-instance-48691/

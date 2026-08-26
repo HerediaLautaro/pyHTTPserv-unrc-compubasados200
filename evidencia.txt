@@ -1,0 +1,25 @@
+primer fallo: "GET"
+python3 httpServ.py 
+running on port 9292
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lito/Desktop/pyHTTPserv-unrc-compubasados200/httpServ.py", line 11, in thatServer
+    if not path.startsWith("/task") :
+           ^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'startsWith'. Did you mean: 'startswith'?
+127.0.0.1 - - [26/Aug/2026 09:46:54] "GET /tasks HTTP/1.1" 500 59
+---------------
+segundo fallo: "GET"
+running on port 9292
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/wsgiref/handlers.py", line 138, in run
+    self.finish_response()
+  File "/usr/lib/python3.12/wsgiref/handlers.py", line 184, in finish_response
+    self.write(data)
+  File "/usr/lib/python3.12/wsgiref/handlers.py", line 284, in write
+    assert type(data) is bytes, \
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: write() argument must be a bytes instance
+127.0.0.1 - - [26/Aug/2026 11:44:43] "GET /tasks HTTP/1.1" 500 59
